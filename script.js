@@ -1,46 +1,54 @@
-console.log("Olá, mundo");
-//alert("Olá");
+let meuElemento = document.getElementById("paragrafo1");
+console.log(meuElemento);
+console.log(meuElemento.textContent);
 
-//let nome = window.prompt("Nome: ");
-//console.log("Nome: " + nome);
+let paragrafo1 = document.getElementsByClassName("paragrafo");
+console.log(paragrafo1);
 
-//document.writeln("Escrever HTML");
+//console.log(paragrafo1[0].textContent);
 
-//variáveis
-var animal = "cachorro";
-console.log(animal);
-let nomeCompleto = "Fulano da Silva";
-console.log(nomeCompleto);
-const valor = 10;
-console.log(valor);
+for (let i=0; i< paragrafo1.length; i++) {
+    console.log(paragrafo1[i].textContent);
+}
 
-//valor = 20;
-console.log(valor);
+console.log("buscando todos os elementos com a tag p");
+let paragrafo2 = document.getElementsByTagName("p");
+for (let i=0; i< paragrafo2.length; i++) {
+    console.log(paragrafo2[i].textContent);
+}
 
-var status = true;
+//criar uma calculadora (soma)
+function somar(){
+    let n1 = parseFloat(document.getElementById("num1").value);
+    let n2 = parseFloat(document.getElementById("num2").value);
 
-//verificar o tipo da variável
-console.log(typeof valor);
-console.log(typeof nomeCompleto);
-console.log(status);
+    console.log(typeof n1);
+    console.log(typeof n2);
 
-//operadores aritméticos
-var num1 = 10;
-var num2 = 20;
-var soma = num1 + num2;
-console.log(soma);
+    let soma = n1 + n2;
 
-//operadores de comparação
-console.log(5 == "5"); //igualdade (valor = true)
-console.log(5 === "5"); //estritamente igual o (valor é tipo = false)
+    let saida = `<strong>Resultado: ${soma}</strong>`
+    document.getElementById("resultado").innerHTML = saida;
+}
 
-console.log(10 != "10"); // desigualdade
-console.log(10 !== "10"); //estritamente desigual
+//criar elemento de forma dinâmica 
+let destino = document.getElementById("elemento");
+let p = document.createElement("p");
+p.textContent= "Elemento criado via Javascript";
+destino.append(p);
 
-//dados de entrada (input)
-var idade = parseInt(window.prompt("Idade: "));
-console.log(typeof idade);
+let ul = document.createElement("ul");
+let itens = ["Item 1", "Item 2", "Item 3"];
 
-var resultado = idade + 10;
-console.log(`Olá ${nomeCompleto} você possui ${idade}`); //template literal
+for( let i=0; i < itens.length; i++){
+    let li = document.createElement("li");
+    li.textContent = itens[i];
+    ul.append(li);
+}
+destino.append(ul);
 
+let botao1 = document.getElementById("botao1");
+botao1.onclick = function(){
+    alert("Clicou!");
+    botao1.style.background = "black";
+}
